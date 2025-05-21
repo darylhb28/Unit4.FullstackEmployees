@@ -1,6 +1,10 @@
+import db from "#db/client" 
+
 /** @returns the employee created according to the provided details */
 export async function createEmployee({ name, birthday, salary }) {
-  // TODO
+  const result = await db.query(
+    'INSERT INTO fullstack_employees (name, birthday, salary) VALUES ($1, $2, $3) RETURNING *', [name, birthday, salary]
+  )
 }
 
 // === Part 2 ===
