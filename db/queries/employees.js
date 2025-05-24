@@ -44,7 +44,9 @@ export async function updateEmployee({ id, name, birthday, salary }) {
   RETURNING *;
   `
   const {rows: employee} = await db.query(sql, [name, birthday, salary, id])
+
   return employee[0]
+
 }
 
 /**
@@ -57,5 +59,5 @@ export async function deleteEmployee(id) {
   RETURNING *;`
 
   const {rows: employee} = await db.query(sql, [id])
-  return employee
+  return employee[0]
 }

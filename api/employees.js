@@ -47,11 +47,12 @@ router.route('/:id').delete(async (req, res)=>{
         return res.status(400).send("Id must be a postivie number")
     }
 
-    const deletedEmployee = await deleteEmployee(id)
+    const result = await deleteEmployee(id)
 
-    if (!deletedEmployee){
+    if (!result){
         return res.status(404).send("Employee does not exist")
     }
+
     res.sendStatus(204)
 })
 
